@@ -1,0 +1,261 @@
+ <head>
+    <title>London Traffic Flow and Accidents Visualisation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="leaflet-heat.js"></script>
+    <script src="flowPlot.js"></script>
+    <script src="heatPlot.js"></script>
+    <script src="Chart.js"></script>
+    <script src="Chart.Scatter.js"></script>
+    <script src="accidentPlot.js"></script>
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+        
+</head>
+
+<body>
+
+        <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <a href="#menu-toggle" class="glyphicon glyphicon-chevron-right" id="menu-toggle2">Close</a>
+            <h4><text id="sidebarLongLat"></text></h4>
+            <h5><text id="sidebarLocalAuthority"></text></h5>
+            <h5><text id="sidebarRoad"></text></h5>
+            <div> ACCIDENTS OVER TIME </div>
+            <div id="graph1" ></div>
+            <div> TRAFFIC FLOW OVER TIME </div>
+            <div id="graph2" ></div>
+            <div> CUMULATIVE PERCENTAGE CHANGE OVER TIME</div>
+            <div id="graph3" ></div>
+            <div> ACCIDENTS AGAINST TRAFFIC FLOW </div>
+            <div id="graph4" ></div>
+        </div>
+
+        <div id="map" class = "container-fluid"></div>
+
+        <div class="container">
+    <div class="row">
+    <div class="col-sm-3" style="background-color:lavender;">
+        Severity 1: <input type="checkbox" id="check1" /> <br>
+        Severity 2: <input type="checkbox" id="check2" /> <br>
+        Severity 3: <input type="checkbox" id="check3" /> <br>
+    </div>
+
+    <div class="col-sm-4">
+        All Vehicles: <input type="checkbox" class="vehicleCheckbox" id="allvehiclesCheck" value="1" /> <br> <br>
+        Cycles: <input type="checkbox" class="vehicleCheckbox" id="cyclesCheck" value="2" />     
+        Two-wheeled motor vehicles: <input type="checkbox" class="vehicleCheckbox" id="2wheeledCheck" value="3" />    
+        Cars: <input type="checkbox" class="vehicleCheckbox" id="carsCheck" value="4" />
+        Buses/Coaches: <input type="checkbox" class="vehicleCheckbox" id="BusesCheck" value="5" />
+        LGVs: <input type="checkbox" class="vehicleCheckbox" id="lgvsCheck" value="6" />
+        HGVs: <input type="checkbox" class="vehicleCheckbox" id="hgvsCheck" value="7" />
+
+    </div>
+
+    <div class="col-sm-4" style="background-color:lavenderblush;">
+        <input type="range" min="2005" max="2014" id="slider" />
+        Overlay Accidents: <input type="checkbox" id="overlayCheckbox" />
+
+        <h1><text id="currentYear">2010</text></h1>
+
+    </div>
+</div>
+</div>
+
+    <script>
+
+    $('.vehicleCheckbox').click(function() {
+        rePlot();
+
+    $(this).siblings('input:checkbox').prop('checked', false);
+    });
+
+    function getCurrentVehicleString() {
+        var toReturn = "";
+        if($('#allvehiclesCheck').is(':checked')) {
+            toReturn = "allVehicles";
+        }
+        else  {
+            switch(true) { 
+                case($('#cyclesCheck').is(':checked')): toReturn = "cycles"; break;
+                case($('#2wheeledCheck').is(':checked')): toReturn = "2wheeled"; break;
+                case($('#carsCheck').is(':checked')): toReturn = "cars"; break;
+                case($('#BusesCheck').is(':checked')): toReturn = "buses"; break;
+                case($('#lgvsCheck').is(':checked')): toReturn = "lgvs"; break;
+                case($('#hgvsCheck').is(':checked')): toReturn = "hgvs"; break;
+            }
+        }
+
+        return toReturn;
+    }
+
+
+    $("#menu-toggle2").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        toggled = false;
+        clearLine();
+    });
+    </script>
+
+        <script>
+
+        var toggled = false;
+
+            document.addEventListener('DOMContentLoaded', function() {
+                heatPlot($('#currentYear').text());
+                $( "#graph1" ).append("<div></div>");
+                document.getElementById("allvehiclesCheck").checked = true;
+            }, false);
+
+            var map = L.map('map').setView([51.505, -0.09], 12);
+
+             L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+            }).addTo(map);
+
+            map.on('moveend', function() { 
+                if(!cluster) {
+                    rePlot();
+                }
+            });
+
+        </script>
+
+    </div>
+
+
+    <script class = "controls">
+    
+        $('#check1, #check2, #check3').change(function(){
+                rePlot();
+        });
+
+        $('#overlayCheckbox').change(function(){
+            if (!$(this).is(':checked')) {
+                currentShownYrs = [];
+                rePlot();
+
+            }
+
+        });
+
+    </script>
+
+    <script class = "plotting_functions">
+
+        // true if in cluster view:
+        var cluster = map.getZoom() <= 14;
+        var markers = [];
+        var flowMarkers = []; 
+        var currentShownYrs = []; 
+
+        function rePlot() {
+            if(!cluster) {
+            clearMap(); 
+            if(!$('#overlayCheckbox').is(':checked')) {
+                plot(parseInt($('#currentYear').text()));
+                console.log(parseInt($('#currentYear').text()));
+            }
+
+            else {
+                for(i=0; i<currentShownYrs.length; i++) {
+                    plot(currentShownYrs[i]);
+                }
+            }
+            }
+
+            else {
+                reHeat()
+            }
+        }
+
+        function clearMap() {
+
+            //clear accidents:
+            for(i=0;i<markers.length; i++) {
+                map.removeLayer(markers[i]);
+                console.log("Working to clear...");
+            }
+
+            //clear flow points:
+            for(i=0;i<flowMarkers.length; i++) {
+                map.removeLayer(flowMarkers[i]);
+            }
+
+            markers = [];
+            flowMarkers = [];
+        }
+
+        function isYearShown(year) {
+            for(i=0;i<currentShownYrs.length; i++) {
+                if(currentShownYrs[i]==year) {
+                    return true;
+                }
+            }
+
+            return false; 
+        }
+
+    </script>
+
+    <script class ="viewAdjustment">
+
+    map.on('zoomend', function () {
+
+    if (map.getZoom() <= 14) {
+        if(!cluster) {
+            clearMap();
+            reHeat();
+            cluster = true;
+        }        
+    }
+
+    if (map.getZoom() > 14)
+    {
+        if(cluster) {
+            removeHeat();
+            cluster = false;
+
+        }
+
+        console.log("UNCLUSTER");
+
+    }});   
+
+    </script>
+
+    <script class = "slider_control">
+
+    $('#slider').on('input',function(){
+        var val = $(this).val();
+        $('#currentYear').text(val);
+        if($('#overlayCheckbox').is(':checked')) {
+            if(!isYearShown(val)) {
+                plot(val);
+                currentShownYrs.push(val);
+            }
+        }
+
+        else if(map.getZoom() <= 14) {
+            reHeat();
+        }
+
+        else {
+            clearMap();
+            plot(val); // plots both accidents and flowPoints 
+        }
+
+    });
+
+    </script>
+
+    
+</body>
+
