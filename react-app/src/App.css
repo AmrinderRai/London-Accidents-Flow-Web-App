@@ -7,18 +7,12 @@
 #root {
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 1em;
-  font-family: sans-serif;
-  color: #333;
-  background-color: #f3e4d7;
 }
 
 /* height of the container */
 .leaflet-container {
-  height: 100vh;
+  height: 70vh;
   width: 100vh;
   border-radius: 2rem;
 }
