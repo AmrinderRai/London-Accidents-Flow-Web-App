@@ -5,6 +5,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <h1>London Traffic Flow and Accidents Visualisation</h1>
     <App />
   </React.StrictMode>,
 )
