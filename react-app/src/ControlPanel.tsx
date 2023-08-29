@@ -27,7 +27,8 @@ function ControlPanel() {
         </div>
     )
 
-    // TO DO: Column styling for div components 
+    // TO DO: Column styling for div components in CSS... with background colours 
+    // TO DO: OnClick event handling which calls a get data function call to API (checking what is ticked and what is not)
 
     
 }

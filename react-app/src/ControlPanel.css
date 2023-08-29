@@ -1,0 +1,8 @@
+.control-panel { 
+    display: flex;
+    flex-direction: column;
+}
+
+.severeity-control {
+    background-color:lavender;
+}
