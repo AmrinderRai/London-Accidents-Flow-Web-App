@@ -1,13 +1,8 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 #root {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 /* height of the container */
@@ -15,4 +10,5 @@
   height: 70vh;
   width: 100vh;
   border-radius: 2rem;
+  text-align: center;
 }

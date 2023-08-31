@@ -1,12 +1,16 @@
 .control-panel { 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100vh;
+    text-align: center;
 }
 
 .severity-control {
     background-color:rgb(5, 5, 41);
+    padding: 35px; 
 }
 
 .year-control {
     background-color: rgb(68, 0, 14);
+    padding: 35px; 
 }
