@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
-.severeity-control {
-    background-color:lavender;
+.severity-control {
+    background-color:rgb(5, 5, 41);
+}
+
+.year-control {
+    background-color: rgb(68, 0, 14);
 }
