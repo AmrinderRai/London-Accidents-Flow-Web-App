@@ -1,20 +1,23 @@
 import sqlite3 
 from sqlite3 import Error
+from utils.connect_to_db import create_connection
 
-def create_connection(string: db_file):
-    """ create a db connection to sqlite db """
+def main():
+    # Following tutorial: https://www.sqlitetutorial.net/sqlite-python/creating-tables/
+    # TO BE COMPLETED 
+    database = "./sqlite/db/london_viz.db"
 
-    conn = None
+    sql_create_collision_vehicle_table = ""
 
-    try:
-        conn = sqlite3.connect(db_file)
-        print(sqlite3.version)
-    except Error as e:
-        print(e)
-    finally:
-        if conn:
-            conn.close()
+    sql_create_collision_casualties_table = ""
+
+    sql_create_collision_attendant_table = ""
+
+    sql_create_flow_table = ""
+
+    conn = create_connection(database)
+
 
 if __name__ == '__main__':
-    create_connection("./sqlite/db/london_viz.db")
+    main()
 
