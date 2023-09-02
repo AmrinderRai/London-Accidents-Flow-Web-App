@@ -1,0 +1,97 @@
+[
+    {
+        "2005": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2005-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2005-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2005-gla-data-extract-attendant.csv"
+        },
+        "2006": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2006-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2006-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2006-gla-data-extract-attendant.csv"       
+        },
+        "2007": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2007-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2007-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2007-gla-data-extract-attendant.csv"       
+        },
+        "2008": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2008-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2008-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2008-gla-data-extract-attendant.csv"       
+        },
+        "2009": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2009-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2009-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2009-gla-data-extract-attendant.csv"       
+        },
+        "2010": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2010-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2010-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2010-gla-data-extract-attendant.csv"       
+        },
+        "2011": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2011-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2011-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2011-gla-data-extract-attendant.csv"       
+        },
+        "2012": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2012-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2012-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2012-gla-data-extract-attendant.csv"       
+        },
+        "2013": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2013-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2013-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2013-gla-data-extract-attendant.csv"       
+        },
+        "2014": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2014-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2014-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2014-gla-data-extract-attendant.csv"       
+        },
+        "2015": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2015-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2015-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2015-gla-data-extract-attendant.csv"       
+        },
+        "2016": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2016-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2016-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2016-gla-data-extract-attendant.csv"       
+        },
+        "2017": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2017-data-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2017-data-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2017-data-attendant.csv"       
+        },
+        "2018": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2018-data-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2018-data-files-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2018-data-files-attendant.csv"       
+        },
+        "2019": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2019-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2019-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2019-gla-data-extract-attendant.csv"       
+        },
+        "2020": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/2020-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/2020-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/2020-gla-data-extract-attendant.csv"       
+        },
+        "2021": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/jan-dec-2021-gla-data-extract-vehicle.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/jan-dec-2021-gla-data-extract-casualty.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/jan-dec-2021-gla-data-extract-attendant.csv"       
+        },
+        "2022": {
+            "vehicles": "https://tfl.gov.uk/cdn/static/cms/documents/jan-sept-2022-gla-data-extract-vehicle-provisional.csv",
+            "casualty": "https://tfl.gov.uk/cdn/static/cms/documents/jan-sept-2022-gla-data-extract-casualties-provisional.csv",
+            "attendant": "https://tfl.gov.uk/cdn/static/cms/documents/jan-sept-2022-gla-data-extract-attendant-provisional.csv"       
+        }
+    },
+    {
+        "raw_count_flow_data_url": "https://storage.googleapis.com/dft-statistics/road-traffic/downloads/rawcount/region_id/dft_rawcount_region_id_6.csv"
+    }
+]
